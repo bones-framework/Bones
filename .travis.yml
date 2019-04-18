@@ -1,0 +1,25 @@
+git:
+    submodules: false
+
+before_install:
+    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+    - git submodule update --init --recursive
+
+language: c
+
+compiler: gcc-7
+
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - gcc-7
+            - make
+
+jobs:
+    include:
+        - stage: compile
+          script: make -j4
+stages:
+    - compile 
