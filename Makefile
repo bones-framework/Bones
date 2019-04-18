@@ -5,6 +5,7 @@ SRCS +=
 OBJS := $(SRCS:build/%.o=%.c)
 
 INCLUDE_DIRS += libc/bones-libc
+INCLUDE_DIRS += ./
 
 CFLAGS += $(SRCS:-I%)
 
