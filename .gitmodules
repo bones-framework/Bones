@@ -1,0 +1,3 @@
+[submodule "libs/bones-libc"]
+	path = libs/bones-libc
+	url = git@github.com:bones-framework/bones-libc.git
