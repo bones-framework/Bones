@@ -11,8 +11,8 @@ error_t push_signal(queue_ptr_t queue, signal_wrap_ptr_t signal_wrap) {
         return ERROR_QUEUE_FULL;
     }
 
-    (queue_tail >= QUEUE_SIZE - 1) ? queue->tail = 0 : \
-                                     queue->tail++;
+    (queue_head >= QUEUE_SIZE - 1) ? queue->head = 0 : \
+                                     queue->head++;
 
     sig = &(queue->signals[queue_head]);
     sig->id = wrap_signal->id;
@@ -37,7 +37,7 @@ error_t pop_signal(queue_ptr_t queue, signal_wrap_ptr_t signal_wrap_dest) {
     (queue_tail >= QUEUE_SIZE - 1) ? queue->tail = 0 : \
                                      queue->tail++;
 
-    sig = &(queue->signals[queue_head]);
+    sig = &(queue->signals[queue_tail]);
     signal_wrap_dest->id = sig->id;
     signal_wrap_dest->data = sig->data;
     signal_wrap_dest->callback = sig->callback;
