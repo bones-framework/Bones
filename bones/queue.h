@@ -22,11 +22,9 @@ typedef struct queue {
     queue_index_t head;
     queue_index_t tail;
 } queue_t;
+typedef queue_t* queue_ptr_t;
 
-error_t push_signal(signal_wrap_t sig_wrap);
-error_t pop_signal(signal_wrap_ptr_t sig_wrap_dest);
-#if defined(_DEBUG)
-error_t peek_signal(signal_wrap_ptr_t sig_wrap_dest);
-#endif
+error_t push_signal(queue_ptr_t queue, signal_wrap_ptr_t sig_wrap);
+error_t pop_signal(queue_ptr_t queue, signal_wrap_ptr_t sig_wrap_dest);
 
 #endif
