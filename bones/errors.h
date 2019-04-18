@@ -43,6 +43,8 @@ extern error_frame_t error_frames[BONES_ERROR_MAX_FRAMES];
 
 #define NO_ERROR            ((error_t)0)
 #define ERROR_CHECK_FAILED  ((error_t)1)
+#define ERROR_QUEUE_EMPTY   ((error_t)2)
+#define ERROR_QUEUE_FULL    ((error_t)3)
 
 #define CHECK_ERROR(condition, error) \
     do { \
