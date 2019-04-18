@@ -5,10 +5,22 @@ before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
 
-compiler:
-    - gcc
+language: c
 
-install: git sed gcc make get-deps
+compiler: gcc
+
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - gcc-7
+            - make
+
+script:
+    - ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
+    - export CC=/usr/bin/gcc-7
+    - gcc -v && g++ -v && cmake --version
 
 jobs:
     include:
