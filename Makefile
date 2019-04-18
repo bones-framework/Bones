@@ -7,7 +7,7 @@ SRCS += bones/signal_router.c
 OBJS := $(SRCS:%.c=build/%.o)
 OBJDIRS := $(dir $(OBJS))
 
-INCLUDE_DIRS += libc/bones-libc
+INCLUDE_DIRS += libs/bones-libc
 INCLUDE_DIRS += ./
 
 CFLAGS += -nostdinc -std=gnu99 -Wall -Werror
