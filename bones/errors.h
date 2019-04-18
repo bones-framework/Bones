@@ -20,9 +20,9 @@
     
     #define ERROR_PUSH_FRAME() \
         do { \
-            if(error_frame_length < BONES_ERROR_MAX_FRAMES) { \
-                error_frames[(err >> 16)] = (error_frame_t){ __FILE__, __FUNCTION__, __LINE__ }; \
-                err = (((err >> 16) + 1) << 16) | (err & 0xFFFF); \
+            if(((err >> 16) & 0xFFFF) < BONES_ERROR_MAX_FRAMES) { \
+                error_frames[(err >> 16) & 0xFFFF] = (error_frame_t){ __FILE__, __FUNCTION__, __LINE__ }; \
+                err = ((((err >> 16) & 0xFFFF) + 1) << 16) | (err & 0xFFFF); \
             } \
         } while(0)
 #else
@@ -30,9 +30,9 @@
     
     #define ERROR_PUSH_FRAME() \
         do { \
-            if(error_frame_length < BONES_ERROR_MAX_FRAMES) { \
-                error_frames[(err >> 16)] = __builtin_return_address(0); \
-                err = (((err >> 16) + 1) << 16) | (err & 0xFFFF); \
+            if(((err >> 16) & 0xFFFF) < BONES_ERROR_MAX_FRAMES) { \
+                error_frames[(err >> 16) & 0xFFFF] = __builtin_return_address(0); \
+                err = ((((err >> 16) & 0xFFFF) + 1) << 16) | (err & 0xFFFF); \
             } \
         } while(0)
 #endif

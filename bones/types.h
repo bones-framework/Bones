@@ -119,7 +119,7 @@
       #define ARCH_MAX  0xffffffffffffffffu
     #else
       #warning Detected sparc architecture but \
-	      couldn't discern bits, defaulting to \
+	      couldnt discern bits, defaulting to \
 	      32-bit default configuration. Please \
 	      re-define ARCH macros as appropriate \
 	      to your system.
