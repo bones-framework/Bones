@@ -8,8 +8,6 @@
 #endif
 
 typedef enum signal_code {
-    SIGNAL_CODE_INVALID,
-
     // TODO: how users define signals
 
     SIGNAL_CODE_LAST
