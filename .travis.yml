@@ -1,4 +1,4 @@
-got:
+git:
     submodules: false
 
 before_install:
