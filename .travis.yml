@@ -25,6 +25,6 @@ script:
 jobs:
     include:
         - stage: compile
-          script: make -J4
+          script: make -j4
 stages:
     - compile 
