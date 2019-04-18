@@ -7,7 +7,7 @@ before_install:
 
 language: c
 
-compiler: gcc
+compiler: gcc-7
 
 addons:
     apt:
@@ -16,11 +16,6 @@ addons:
         packages:
             - gcc-7
             - make
-
-script:
-    - ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
-    - export CC=/usr/bin/gcc-7
-    - gcc -v && g++ -v && cmake --version
 
 jobs:
     include:
