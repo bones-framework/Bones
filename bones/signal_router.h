@@ -18,6 +18,6 @@ extern signal_router_t signal_router;
  * 
  * TODO: allow to either route to all or just to the first one found
  */
-error_t route_signal(signal_code_t code, void* params,int* suid);
+error_t route_signal(signal_code_t code, void* params, int* suid);
 
 #endif

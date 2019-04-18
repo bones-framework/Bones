@@ -1,6 +1,8 @@
 CC ?= gcc
 
-SRCS += 
+SRCS += bones/errors.c
+SRCS += bones/signals.c
+SRCS += bones/signal_router.c
 
 OBJS := $(SRCS:build/%.o=%.c)
 

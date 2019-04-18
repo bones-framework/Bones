@@ -8,12 +8,12 @@ error_t route_signal(signal_code_t code, void* params, int* suid) {
     
     for(signal_handler_t* handler = signal_router.handlers; handler < signal_router.handlers + BONES_SIGNAL_ROUTER_HANDLER_COUNT; handler++) {
         if(handler && handler->code == code) {
-            CHECK_AND_RETHROW(handler(handler, last_suid, params));
+            CHECK_AND_RETHROW(handler->handler(handler, last_suid, params));
         }
     }
 
 cleanup:
-    *suid = last_suid;
+    if(suid) *suid = last_suid;
     last_suid++;    
     
     return err;
