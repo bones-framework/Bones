@@ -17,7 +17,6 @@ all: $(OBJDIRS) $(OBJS)
 	$(CC) $(CFLAGS) -o bones-core $(OBJS)
 
 build/%.o: %.c
-	echo $(OBJDIRS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 build/%:

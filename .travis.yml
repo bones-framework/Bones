@@ -4,12 +4,15 @@ git:
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
-    - apt update
-    - apt upgrade gcc make
-    
+
+compiler:
+    - gcc
+
+install: git sed gcc make get-deps
+
 jobs:
     include:
         - stage: compile
-          script: make
+          script: make -J4
 stages:
     - compile 
