@@ -10,13 +10,14 @@ OBJDIRS := $(dir $(OBJS))
 INCLUDE_DIRS += libs/bones-libc
 INCLUDE_DIRS += ./
 
-CFLAGS += -nostdinc -std=gnu99 -Wall -Werror
+CFLAGS += -nostdinc -nostartfiles -ffreestanding -std=gnu99 -Wall -Werror
 CFLAGS += $(INCLUDE_DIRS:%=-I%)
 
 all: $(OBJDIRS) $(OBJS)
 	$(CC) $(CFLAGS) -o bones-core $(OBJS)
 
-build/%.o: %.c $(OBJDIRS)
+build/%.o: %.c
+	echo $(OBJDIRS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 build/%:

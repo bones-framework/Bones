@@ -4,6 +4,7 @@
 
 error_t signal_queue(signal_code_t code, void* params, signal_callback_f callback, int* suid) {
     // TODO: requires queues
+    return NO_ERROR;
 }
 
 error_t signal_invoke(signal_code_t code, void* params) {
