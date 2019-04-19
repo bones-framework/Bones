@@ -2,15 +2,16 @@
 #define BONES_QUEUE_H
 
 #include <stdint.h>
+#include <string.h>
 #include "signals.h"
 #include "errors.h"
 
 #define QUEUE_SIZE 512
 
 typedef struct signal_wrap {
-    signal_id_t         id;
-    void*               data;
-    signal_callback_f_t callback;
+    int               id;
+    void*             data;
+    signal_callback_f callback;
 } signal_wrap_t;
 
 typedef enum queue_state {
