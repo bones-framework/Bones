@@ -7,7 +7,7 @@
 
 #define QUEUE_SIZE 512
 
-typedef struct ignal_wrap {
+typedef struct signal_wrap {
     signal_id_t         id;
     void*               data;
     signal_callback_f_t callback;
@@ -24,7 +24,7 @@ typedef enum queue_state {
 typedef struct queue {
     size_t head;
     size_t tail;
-    size_t queue_state;
+    size_t state;
     size_t element_size;
     void*  elements;
 } queue_t;
