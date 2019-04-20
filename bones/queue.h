@@ -6,13 +6,20 @@
 #include "signals.h"
 #include "errors.h"
 
-#define QUEUE_SIZE 512
+#define QUEUE_FROM_ARRAY(arr) \
+    (queue_t){  \
+        .size = sizeof(arr) / sizeof(*arr), \
+        .element_size = sizeof(*arr), \
+        .elements = arr, \
+    }
 
-typedef struct signal_wrap {
-    int               id;
-    void*             data;
-    signal_callback_f callback;
-} signal_wrap_t;
+#define STATIC_QUEUE(name, type, size) \
+    static type __##name##_queue_buffer[size] = {0}; \
+    static queue_t name = QUEUE_FROM_ARRAY(__##name##_queue_buffer);
+
+#define QUEUE(name, type, size) \
+    type __##name##_queue_buffer[size] = {0}; \
+    queue_t name = QUEUE_FROM_ARRAY(__##name##_queue_buffer);
 
 typedef enum queue_state {
     QUEUE_EMPTY = 0,
@@ -25,7 +32,8 @@ typedef enum queue_state {
 typedef struct queue {
     size_t head;
     size_t tail;
-    size_t state;
+    queue_state_t state;
+    size_t size;
     size_t element_size;
     void*  elements;
 } queue_t;

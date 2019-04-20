@@ -14,7 +14,7 @@ error_t enqueue(queue_t* queue, void* element) {
             );
 
     
-    if (queue->head < QUEUE_SIZE - 1) {
+    if (queue->head < queue->size - 1) {
         queue->head++;
     } else {
 	queue->head = 0;
@@ -38,7 +38,7 @@ error_t dequeue(queue_t* queue, void* element_dest) {
 		   queue->element_size]),
 	   queue->element_size);
 
-    if (queue->tail < QUEUE_SIZE - 1) {
+    if (queue->tail < queue->size - 1) {
 	    queue->tail++;
     } else {
 	    queue->tail = 0;
