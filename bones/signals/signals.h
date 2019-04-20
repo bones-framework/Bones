@@ -1,7 +1,7 @@
 #ifndef BONES_SIGNALS_H
 #define BONES_SIGNALS_H
 
-#include "errors.h"
+#include <bones/util/errors.h>
 
 typedef enum signal_code {
     // TODO: how users define signals

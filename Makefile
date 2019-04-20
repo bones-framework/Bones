@@ -1,9 +1,9 @@
 CC ?= gcc
 
-SRCS += bones/errors.c
-SRCS += bones/signals.c
-SRCS += bones/signal_router.c
-SRCS += bones/queue.c
+SRCS += bones/signals/signals.c
+SRCS += bones/signals/signal_router.c
+SRCS += bones/util/errors.c
+SRCS += bones/util/queue.c
 
 OBJS := $(SRCS:%.c=build/%.o)
 OBJDIRS := $(dir $(OBJS))

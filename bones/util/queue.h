@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include <string.h>
-#include "signals.h"
+#include <bones/signals/signals.h>
 #include "errors.h"
 
 #define QUEUE_FROM_ARRAY(arr) \
